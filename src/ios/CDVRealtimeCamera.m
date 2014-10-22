@@ -129,31 +129,49 @@
 	// get buffer information
     uint8_t *baseAddress = (uint8_t *)CVPixelBufferGetBaseAddress(imageBuffer);
     size_t bytesPerRow = CVPixelBufferGetBytesPerRow(imageBuffer);
-    size_t width = CVPixelBufferGetWidth(imageBuffer);
-    size_t height = CVPixelBufferGetHeight(imageBuffer);
+    //size_t width = CVPixelBufferGetWidth(imageBuffer);
+    //size_t height = CVPixelBufferGetHeight(imageBuffer);
+
+    float brightness = 0;
+ 	int bufferWidth = CVPixelBufferGetWidth(pixelBuffer);
+    int bufferHeight = CVPixelBufferGetHeight(pixelBuffer);
+    unsigned char *pixel = (unsigned char *)CVPixelBufferGetBaseAddress(pixelBuffer);
+
+    for( int row = 0; row < bufferHeight; row++ ) {     
+        float rowBrightness= 0;
+        for( int column = 0; column < bufferWidth; column++ ) {
+            float luma = 0.2126*pixel[0]+0.7152*pixel[1]+0.0722*pixel[2];
+            pixel += 4;
+            rowBrightness += luma;
+        }
+        brightness += rowBrightness / bufferWidth;
+    }
+    brightness = brightness / bufferHeight;
+	
+
 
 	// copy the raw camera data to an NSData (this will be mapped to an ArrayBuffer in JS
 	// swizzle to RGBA and flip height
-	[self.frame_buffer setLength:bytesPerRow * height];
-	float brightness = 0;
-	uint8_t *destAddress = (uint8_t*)[self.frame_buffer mutableBytes];
-	for (size_t i=0;i<height;++i)
-	{
-		uint8_t* row_start = baseAddress + i * bytesPerRow;
-		uint8_t* dst_row = destAddress + i * bytesPerRow;
-		int wbright = 0;
-		for (size_t j=0;j<width;++j)
-		{
-			uint8_t* px_start = row_start + j * 4;
-			wbright = wbright + *(px_start + 2) + *(px_start + 1) + *(px_start + 0);
-			*(dst_row++) = *(px_start + 2);
-			*(dst_row++) = *(px_start + 1);
-			*(dst_row++) = *(px_start + 0);
-			*(dst_row++) = *(px_start + 3);
-		}
-		brightness = wbright / width;
-	}
-	brightness = brightness / height;
+	// [self.frame_buffer setLength:bytesPerRow * height];
+	// float brightness = 0;
+	// uint8_t *destAddress = (uint8_t*)[self.frame_buffer mutableBytes];
+	// for (size_t i=0;i<height;++i)
+	// {
+	// 	uint8_t* row_start = baseAddress + i * bytesPerRow;
+	// 	uint8_t* dst_row = destAddress + i * bytesPerRow;
+	// 	int wbright = 0;
+	// 	for (size_t j=0;j<width;++j)
+	// 	{
+	// 		uint8_t* px_start = row_start + j * 4;
+	// 		wbright = wbright + *(px_start + 2) + *(px_start + 1) + *(px_start + 0);
+	// 		*(dst_row++) = *(px_start + 2);
+	// 		*(dst_row++) = *(px_start + 1);
+	// 		*(dst_row++) = *(px_start + 0);
+	// 		*(dst_row++) = *(px_start + 3);
+	// 	}
+	// 	brightness = wbright / width;
+	// }
+	// brightness = brightness / height;
 	// ok, safe to unlock the video buffer now that we've copied
     CVPixelBufferUnlockBaseAddress(imageBuffer,0);
 	
