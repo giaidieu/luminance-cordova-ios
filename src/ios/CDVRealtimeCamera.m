@@ -183,11 +183,11 @@
 
 
 	// just send an empty event telling the app to pull the buffer
-	NSArray* params = [NSArray arrayWithObjects: bufferWidth, bufferHeight, nil];
+	NSArray* params = [NSArray arrayWithObjects: [NSNumber numberWithInt:bufferWidth], [NSNumber numberWithInt:bufferHeight], nil];
 	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
 #else
 	// call the result callback with the image data as a buffer
-	NSArray* params = [NSArray arrayWithObjects: bufferWidth, bufferHeight, brightness, nil];
+	NSArray* params = [NSArray arrayWithObjects: [NSNumber numberWithInt:bufferWidth], [NSNumber numberWithInt:bufferHeight], [NSNumber numberWithFloat:brightness], nil];
 	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsMultipart: params ];
 #endif
 	[pluginResult setKeepCallbackAsBool:YES]; // keep the callback so we can use it again
