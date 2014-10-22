@@ -144,8 +144,8 @@
 		int wbright = 0;
 		for (size_t j=0;j<width;++j)
 		{
-			wbright = wbright + *(px_start + 2) + *(px_start + 1) + *(px_start + 0);
 			uint8_t* px_start = row_start + j * 4;
+			wbright = wbright + *(px_start + 2) + *(px_start + 1) + *(px_start + 0);
 			*(dst_row++) = *(px_start + 2);
 			*(dst_row++) = *(px_start + 1);
 			*(dst_row++) = *(px_start + 0);
