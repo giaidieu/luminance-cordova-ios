@@ -127,15 +127,15 @@
     CVPixelBufferLockBaseAddress(imageBuffer,0);
 
 	// get buffer information
-    uint8_t *baseAddress = (uint8_t *)CVPixelBufferGetBaseAddress(imageBuffer);
-    size_t bytesPerRow = CVPixelBufferGetBytesPerRow(imageBuffer);
+    // uint8_t *baseAddress = (uint8_t *)CVPixelBufferGetBaseAddress(imageBuffer);
+    // size_t bytesPerRow = CVPixelBufferGetBytesPerRow(imageBuffer);
     //size_t width = CVPixelBufferGetWidth(imageBuffer);
     //size_t height = CVPixelBufferGetHeight(imageBuffer);
 
     float brightness = 0;
- 	int bufferWidth = CVPixelBufferGetWidth(pixelBuffer);
-    int bufferHeight = CVPixelBufferGetHeight(pixelBuffer);
-    unsigned char *pixel = (unsigned char *)CVPixelBufferGetBaseAddress(pixelBuffer);
+ 	int bufferWidth = CVPixelBufferGetWidth(imageBuffer);
+    int bufferHeight = CVPixelBufferGetHeight(imageBuffer);
+    unsigned char *pixel = (unsigned char *)CVPixelBufferGetBaseAddress(imageBuffer);
 
     for( int row = 0; row < bufferHeight; row++ ) {     
         float rowBrightness= 0;
