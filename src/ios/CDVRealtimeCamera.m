@@ -95,7 +95,7 @@
 
 	// keep a frame buffer around so we can avoid memory thrashing
 	self.frame_buffer = [NSMutableData data];
-
+	//self.brightness = [NSNumber data];
 	// connect the in/out pins and start running
     [self.session addInput:input];
     [self.session addOutput:output];
@@ -135,21 +135,25 @@
 	// copy the raw camera data to an NSData (this will be mapped to an ArrayBuffer in JS
 	// swizzle to RGBA and flip height
 	[self.frame_buffer setLength:bytesPerRow * height];
+	float brightness = 0;
 	uint8_t *destAddress = (uint8_t*)[self.frame_buffer mutableBytes];
 	for (size_t i=0;i<height;++i)
 	{
 		uint8_t* row_start = baseAddress + i * bytesPerRow;
 		uint8_t* dst_row = destAddress + i * bytesPerRow;
+		int wbright = 0;
 		for (size_t j=0;j<width;++j)
 		{
+			wbright = wbright + *(px_start + 2) + *(px_start + 1) + *(px_start + 0);
 			uint8_t* px_start = row_start + j * 4;
 			*(dst_row++) = *(px_start + 2);
 			*(dst_row++) = *(px_start + 1);
 			*(dst_row++) = *(px_start + 0);
 			*(dst_row++) = *(px_start + 3);
 		}
+		brightness = wbright / width;
 	}
-
+	brightness = brightness / height;
 	// ok, safe to unlock the video buffer now that we've copied
     CVPixelBufferUnlockBaseAddress(imageBuffer,0);
 	
@@ -165,7 +169,7 @@
 	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
 #else
 	// call the result callback with the image data as a buffer
-	NSArray* params = [NSArray arrayWithObjects: [NSNumber numberWithInteger:width], [NSNumber numberWithInteger:height], self.frame_buffer, nil];
+	NSArray* params = [NSArray arrayWithObjects: [NSNumber numberWithInteger:width], [NSNumber numberWithInteger:height], brightness, nil];
 	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsMultipart: params ];
 #endif
 	[pluginResult setKeepCallbackAsBool:YES]; // keep the callback so we can use it again

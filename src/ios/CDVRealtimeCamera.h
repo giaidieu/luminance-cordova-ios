@@ -9,6 +9,8 @@
 @property (nonatomic, strong) AVCaptureSession *session;
 @property (nonatomic, strong) NSMutableData *frame_buffer;
 @property (nonatomic, strong) NSString *frame_callback;
+//@property (nonatomic, strong) NSNumber *brightness;
+
 
 - (void)startCapture:(CDVInvokedUrlCommand*)command;
 - (void)endCapture:(CDVInvokedUrlCommand*)command;
