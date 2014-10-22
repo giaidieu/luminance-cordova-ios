@@ -1,7 +1,78 @@
-var rtc = cordova.require("realtimecamera");
+# [Luminance](http://github.com/casoninabox/luminance-cordova-ios)
+### for iOS PhoneGap / Cordova
+***
 
-rtc.startCapture(
-	"352x288", 
-	function(fuu) { console.log('win!', fuu);  }, 
-	function(err) { console.log('fail!', err); }
-);
+Realtime brightness values from the camera. Cordova plugin for iOS.
+
+It uses *AVCaptureVideoDataOutput* to create a capture session. Each frame's luminance is analyzed and passed back.
+
+### How to Install
+***
+
+cordova plugin add http://github.com/casoninabox/luminance-cordova-ios.git
+
+
+### How to Remove
+***
+
+cordova plugin rm com.casonclagg.luminance
+
+
+### How to Use
+***
+
+#### General Usage
+
+    <script>
+      document.addEventListener("deviceready", function() {
+        var rtc = cordova.require("realtimecamera");
+
+	rtc.startCapture(
+		"352x288", 
+		function(width, height, luminance) { 
+			//Do Stuff
+		}, 
+		function(error) { 
+			// That sucks
+		}
+	);
+      });
+    </script>
+
+#### Angular/Ionic Usage
+
+    <script>
+      $ionicPlatform.ready(function() {
+        var rtc = cordova.require("realtimecamera");
+
+	rtc.startCapture(
+		"352x288", 
+		function(width, height, luminance) { 
+			//Do Stuff
+		}, 
+		function(error) { 
+			// That sucks
+		}
+	);
+      });
+    </script>
+
+
+### Known Issues & Roadmap/TODO
+***
+
+* It doesn't work right now.  Lots of naming issues.
+* Add option for setting FPS
+
+
+### Author & Contributions
+***
+
+Cason Clagg <cason@cason.cc>
+
+Fork it. Critique it. Contribute.
+
+### License
+***
+
+MIT
