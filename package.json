@@ -1,15 +1,15 @@
 {
-    "version": "0.2.0",
-    "name": "com.clarknikdelpowell.realtime_camera",
-    "cordova_name": "Realtime Camera",
-    "description": "Loosely based on CanvasCamera by daraosn",
+    "version": "1.0.0",
+    "name": "com.casonclagg.luminance",
+    "cordova_name": "Luminance",
+    "description": "Realtime luminance values from the camera.",
     "license": "MIT",
-    "repo": "https://github.com/Clark-Nikdel-Powell/realtime_camera.git",
+    "repo": "https://github.com/casoninabox/luminance-cordova-ios.git",
     "keywords": [
         "camera",
-        "canvas",
-	"realtime",
-	"webcam"
+        "luminance",
+        "brightness"
+        "realtime"
     ],
     "platforms": [
         "ios",

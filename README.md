@@ -24,38 +24,35 @@ cordova plugin rm com.casonclagg.luminance
 #### General Usage
 
     <script>
-      document.addEventListener("deviceready", function() {
-        var rtc = cordova.require("realtimecamera");
+    		document.addEventListener("deviceready", function() {
+        		var rtc = cordova.require("luminance");
 
-	rtc.startCapture(
-		"352x288", 
-		function(width, height, luminance) { 
-			//Do Stuff
-		}, 
-		function(error) { 
-			// That sucks
-		}
-	);
-      });
+				rtc.startCapture(
+					function(luminance) { 
+						//Do Stuff
+				}, 
+				function(error) { 
+					// That sucks
+				}
+			);
+    	});
     </script>
 
 #### Angular/Ionic Usage
 
-    <script>
-      $ionicPlatform.ready(function() {
-        var rtc = cordova.require("realtimecamera");
-
-	rtc.startCapture(
-		"352x288", 
-		function(width, height, luminance) { 
-			//Do Stuff
-		}, 
-		function(error) { 
-			// That sucks
-		}
-	);
-      });
-    </script>
+	<script>
+	    $ionicPlatform.ready(function() {
+	       var rtc = cordova.require("luminance");
+			rtc.startCapture(
+				function(luminance) { 
+					//Do Stuff
+				}, 
+				function(error) { 
+					// That sucks
+				}
+			);
+	    });
+	</script>
 
 
 ### Known Issues & Roadmap/TODO
