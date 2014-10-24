@@ -18,7 +18,7 @@
     self.session = [[AVCaptureSession alloc] init];
 
 	// Resolution
-    id resolutionParam = [command.arguments objectAtIndex:0];
+    //id resolutionParam = [command.arguments objectAtIndex:0];
 	self.session.sessionPreset = AVCaptureSessionPreset352x288;
 
 	//TODO - Get front camera
