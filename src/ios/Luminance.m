@@ -63,7 +63,7 @@
     CVPixelBufferUnlockBaseAddress(imageBuffer,0);
 	
    	// Callback
-	NSArray* params = [NSArray arrayWithObjects: [NSNumber numberWithInt:bufferWidth], [NSNumber numberWithInt:bufferHeight], [NSNumber numberWithFloat:brightness], nil];
+	NSArray* params = [NSArray arrayWithObjects: [NSNumber numberWithFloat:brightness], nil];
 	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsMultipart: params ];
 
 	[pluginResult setKeepCallbackAsBool:YES];
