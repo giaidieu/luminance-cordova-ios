@@ -1,5 +1,5 @@
 
-#import "CDVRealtimeCamera.h"
+#import "Luminance.h"
 #import <Cordova/CDV.h>
 #import <JavaScriptCore/JavaScriptCore.h>
 
