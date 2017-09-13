@@ -8,11 +8,11 @@
     "keywords": [
         "camera",
         "luminance",
-        "brightness"
+        "brightness",
         "realtime"
     ],
     "platforms": [
-        "ios",
+        "ios"
     ],
-    "engines": [],
+    "engines": []
 }
