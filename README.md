@@ -9,7 +9,7 @@ It uses *AVCaptureVideoDataOutput* to create a capture session. Each frame's lum
 ### How to Install
 ***
 
-cordova plugin add http://github.com/casoninabox/luminance-cordova-ios.git
+cordova plugin add https://github.com/giaidieu/luminance-cordova-ios.git
 
 
 ### How to Remove
