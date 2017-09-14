@@ -58,7 +58,7 @@ cordova plugin rm com.casonclagg.luminance
 ### Known Issues & Roadmap/TODO
 ***
 
-* It doesn't work right now.  Lots of naming issues.
+* WORKS PERFECTLY NOW ON IOS 9 AND 10.
 * Add option for setting FPS
 
 
