@@ -21,9 +21,17 @@
     //id resolutionParam = [command.arguments objectAtIndex:0];
 	self.session.sessionPreset = AVCaptureSessionPreset352x288;
 
-	//TODO - Get front camera
-    AVCaptureDevice* device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-    AVCaptureDeviceInput* input = [AVCaptureDeviceInput deviceInputWithDevice:device error:nil];
+	// Get front camera.
+	  AVCaptureDevice* inputDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo]; // Back camera by default.
+	  NSArray* devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+	  for(AVCaptureDevice* camera in devices) {
+    		if([camera position] == AVCaptureDevicePositionFront) { // is front camera  
+        		inputDevice = camera;
+        		break;
+    		}
+	  }
+	
+    AVCaptureDeviceInput* input = [AVCaptureDeviceInput deviceInputWithDevice:inputDevice error:nil];
 
     AVCaptureVideoDataOutput* output = [[AVCaptureVideoDataOutput alloc] init];
     output.videoSettings = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:kCVPixelFormatType_32BGRA] forKey:(id)kCVPixelBufferPixelFormatTypeKey];
