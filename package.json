@@ -4,7 +4,7 @@
     "cordova_name": "Luminance",
     "description": "Realtime luminance values from the camera.",
     "license": "MIT",
-    "repo": "https://github.com/casoninabox/luminance-cordova-ios.git",
+    "repo": "https://github.com/giaidieu/luminance-cordova-ios.git",
     "keywords": [
         "camera",
         "luminance",
