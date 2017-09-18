@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    id="com.casonclagg.luminance"
-    version="0.2.0">
+    id="com.giaidieu.luminance"
+    version="0.2.1">
 	
 	<name>Luminance</name>
 	<description>Realtime luminance values from the camera.</description>
 	<keywords>camera,realtime,luminance,brightness</keywords>
 	<license>MIT</license>
-	<repo>https://github.com/casoninabox/luminance-cordova-ios.git</repo>
+	<repo>https://github.com/giaidieu/luminance-cordova-ios.git</repo>
 
 	<platform name="ios">
 		<config-file target="config.xml" parent="/*">
