@@ -1,6 +1,6 @@
 {
     "version": "1.0.0",
-    "name": "com.casonclagg.luminance",
+    "name": "com.giaidieu.luminance",
     "cordova_name": "Luminance",
     "description": "Realtime luminance values from the camera.",
     "license": "MIT",
